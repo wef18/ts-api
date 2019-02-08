@@ -1,0 +1,29 @@
+{
+  "name": "ts-api",
+  "version": "1.0.0",
+  "description": "唐诗大全后台PAI",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wef18/ts-api.git"
+  },
+  "keywords": [
+    "唐诗"
+  ],
+  "author": "Wei Erfei",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wef18/ts-api/issues"
+  },
+  "homepage": "https://github.com/wef18/ts-api#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "mysql": "^2.16.0"
+  }
+}
