@@ -9,8 +9,8 @@ const classify = require("./routes/classify");
 
 
 var server = express();
-server.listen(3088);
-console.log("欢迎主人");
+server.listen(5050);
+// console.log("欢迎主人");
 server.use(bodyParser.urlencoded({
   extended:false
 }));
@@ -19,8 +19,8 @@ server.use(express.static(__dirname+"/public"));
 
 /** 解决跨域问题 **/
 server.use(cors({
-	'credentials': true,
-  'origin': "http://127.0.0.1:3088"
+	'credentials': true
+  // 'origin': "http://127.0.0.1:3088"
 }))
 
 // 使用 session 中间件
