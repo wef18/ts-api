@@ -3,14 +3,27 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const session=require('express-session');
+const https = require('https')
+const fs = require('fs')
 /** 引入路由模块 **/ 
 const index = require("./routes/index");
 const classify = require("./routes/classify");
 
 
 var server = express();
-server.listen(5050);
-// console.log("欢迎主人");
+
+
+let key = fs.readFileSync('1964386_tsapi.xyz.key')
+let cert = fs.readFileSync('1964386_tsapi.xyz_public.crt')
+
+let options = {
+  key: key,
+  cert: cert
+}
+const httpsServer = https.createServer(options, server);
+httpsServer.listen(5050, () => {
+  // console.log("欢迎主人");
+});
 server.use(bodyParser.urlencoded({
   extended:false
 }));
