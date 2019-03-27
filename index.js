@@ -10,17 +10,16 @@ const session=require('express-session');
 const index = require("./routes/index");
 const classify = require("./routes/classify");
 
-var options = {
-  key: fs.readFileSync('./ssl/1964386_tsapi.xyz.key'),
-  ca: fs.readFileSync('./ssl/1964386_tsapi.xyz_chain.crt'),
-  cert: fs.readFileSync('./ssl/1964386_tsapi.xyz_public.crt')
-}
+// var options = {
+//   key: fs.readFileSync('./ssl/1964386_tsapi.xyz.key'),
+//   ca: fs.readFileSync('./ssl/1964386_tsapi.xyz_chain.crt'),
+//   cert: fs.readFileSync('./ssl/1964386_tsapi.xyz_public.crt')
+// }
 
 var server = express();
 
-var httpsServer = https.createServer(options, server);
-httpsServer.listen(PORT, () => {
-  console.log("欢迎主人");
+server.listen(PORT, () => {
+  // console.log("欢迎主人");
 });
 
 server.use(bodyParser.json());
