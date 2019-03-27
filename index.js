@@ -23,12 +23,12 @@ httpsServer.listen(PORT, () => {
   console.log("欢迎主人");
 });
 
-httpsServer.use(bodyParser.json());
+server.use(bodyParser.json());
   //托管静态文件到public目录
-  httpsServer.use(express.static(__dirname+"/public"));
+server.use(express.static(__dirname+"/public"));
 
 /** 解决跨域问题 **/
-httpsServer.use(cors({
+server.use(cors({
 	'credentials': true
   // 'origin': "http://127.0.0.1:3088"
 }))
@@ -44,5 +44,5 @@ httpsServer.use(cors({
 // }));
 
 /** 使用路由器来管理路由 **/
-httpsServer.use(index);
-httpsServer.use(classify);
+server.use(index);
+server.use(classify);
