@@ -1,5 +1,5 @@
 /** 引入第三方模块 **/
-const PORT = 5050;
+const PORT = 443;
 const fs = require('fs');
 const https = require('https')
 const express = require("express");
