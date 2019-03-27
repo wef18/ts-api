@@ -1,5 +1,5 @@
 /** 引入第三方模块 **/
-const PORT = 443;
+const PORT = 5050;
 const fs = require('fs');
 const https = require('https')
 const express = require("express");
@@ -23,12 +23,12 @@ httpsServer.listen(PORT, () => {
   console.log("欢迎主人");
 });
 
-server.use(bodyParser.json());
+httpsServer.use(bodyParser.json());
   //托管静态文件到public目录
-server.use(express.static(__dirname+"/public"));
+  httpsServer.use(express.static(__dirname+"/public"));
 
 /** 解决跨域问题 **/
-server.use(cors({
+httpsServer.use(cors({
 	'credentials': true
   // 'origin': "http://127.0.0.1:3088"
 }))
@@ -44,5 +44,5 @@ server.use(cors({
 // }));
 
 /** 使用路由器来管理路由 **/
-server.use(index);
-server.use(classify);
+httpsServer.use(index);
+httpsServer.use(classify);
