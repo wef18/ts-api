@@ -1,4 +1,7 @@
 /** 引入第三方模块 **/
+const PORT = 5050;
+const fs = require('fs');
+const https = require('https')
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
@@ -7,13 +10,20 @@ const session=require('express-session');
 const index = require("./routes/index");
 const classify = require("./routes/classify");
 
+var options = {
+  key: fs.readFileSync('./ssl/1964386_tsapi.xyz.key'),
+  ca: fs.readFileSync('./ssl/1964386_tsapi.xyz_chain.crt'),
+  cert: fs.readFileSync('./ssl/1964386_tsapi.xyz_public.crt')
+}
 
 var server = express();
-server.listen(5050);
-// console.log("欢迎主人");
-server.use(bodyParser.urlencoded({
-  extended:false
-}));
+
+var httpsServer = https.createServer(options, server);
+httpsServer.listen(PORT, () => {
+  console.log("欢迎主人");
+});
+
+server.use(bodyParser.json());
   //托管静态文件到public目录
 server.use(express.static(__dirname+"/public"));
 
