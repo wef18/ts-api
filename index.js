@@ -1,14 +1,14 @@
 /** 引入第三方模块 **/
-const PORT = 5050;
-const fs = require('fs');
+const PORT = 5050
+const fs = require('fs')
 const https = require('https')
-const express = require("express");
-const bodyParser = require("body-parser");
-const cors = require("cors");
-const session=require('express-session');
+const express = require("express")
+const bodyParser = require("body-parser")
+const cors = require("cors")
+const session=require('express-session')
 /** 引入路由模块 **/ 
-const index = require("./routes/index");
-const classify = require("./routes/classify");
+const index = require("./routes/index")
+const classify = require("./routes/classify")
 const login = require('./routes/login')
 
 // var options = {
@@ -20,8 +20,8 @@ const login = require('./routes/login')
 var server = express();
 
 server.listen(PORT, () => {
-  // console.log("监听在 " + PORT);
-});
+  // console.log("监听在 " + PORT)
+})
 
 server.use(bodyParser.json());
   //托管静态文件到public目录
@@ -44,6 +44,6 @@ server.use(cors({
 // }));
 
 /** 使用路由器来管理路由 **/
-server.use(index);
-server.use(classify);
-server.use(login);
+server.use(index)
+server.use(classify)
+server.use(login)
