@@ -9,6 +9,7 @@ const session=require('express-session');
 /** 引入路由模块 **/ 
 const index = require("./routes/index");
 const classify = require("./routes/classify");
+const login = require('./routes/login')
 
 // var options = {
 //   key: fs.readFileSync('./ssl/1964386_tsapi.xyz.key'),
@@ -19,7 +20,7 @@ const classify = require("./routes/classify");
 var server = express();
 
 server.listen(PORT, () => {
-  // console.log("欢迎主人");
+  // console.log("监听在 " + PORT);
 });
 
 server.use(bodyParser.json());
@@ -45,3 +46,4 @@ server.use(cors({
 /** 使用路由器来管理路由 **/
 server.use(index);
 server.use(classify);
+server.use(login);
