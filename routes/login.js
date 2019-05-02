@@ -15,19 +15,19 @@ router.get("/login",(req,res)=>{
       openid = JSON.parse(data)
       pool.query('SELECT openid FROM ts_user', (err, result) => {
         if(err) throw err
-        if(result.length == 0){
-           var data = {
-             openid: openid.openid,
-             utime: new Date()
-           }
-          pool.query('INSERT INTO ts_user SET ?', data, (err, result) => {
-            if(err) throw err
-            if(result.affectedRows == 0){
-              res.send({code: 1, msg: '没有', openid: openid.openid})
-            }
-          })
-        } else {
+        if(result.length > 0){
           res.send({code: 1, msg: '有', openid: openid.openid})
+        } else {
+          var data = {
+            openid: openid.openid,
+            utime: new Date().toString()
+           }
+         pool.query('INSERT INTO ts_user SET ?', data, (err, result) => {
+           if(err) throw err
+           if(result.affectedRows == 0){
+             res.send({code: 1, msg: '没有', openid: openid.openid})
+           }
+         })
         }
       })
     })
