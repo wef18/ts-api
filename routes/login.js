@@ -18,15 +18,16 @@ router.get("/login",(req,res)=>{
         if(result.length > 0){
           res.send({code: 1, msg: '有', openid: openid.openid})
         } else {
+          let date =  new Date()
           var data = {
             openid: openid.openid,
-            utime: new Date().toString()
+            utime: date.toString()
            }
          pool.query('INSERT INTO ts_user SET ?', data, (err, result) => {
            if(err) throw err
-           if(result.affectedRows == 0){
-             res.send({code: 1, msg: '没有', openid: openid.openid})
-           }
+          //  if(result.affectedRows == 0){
+            res.send({code: 1, msg: '没有', openid: openid.openid})
+          //  }
          })
         }
       })
