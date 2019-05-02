@@ -21,7 +21,7 @@ router.get("/login",(req,res)=>{
           let date =  new Date()
           var data = {
             openid: openid.openid,
-            utime: date.toString()
+            utime: date
            }
          pool.query('INSERT INTO ts_user SET ?', data, (err, result) => {
            if(err) throw err
