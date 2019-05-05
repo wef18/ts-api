@@ -79,7 +79,7 @@ router.get('/list', (req, res) => {
   if(req.query.pno !== undefined)
     output.pno = parseInt(req.query.pno)
   if(num == 0){
-    var sql = 'SELECT * FROM nursery_rhyme'
+    var sql = 'SELECT * FROM nursery_rhyme ORDER BY nid DESC'
   } else if(num == 1){
     var sql = 'SELECT * FROM story'
   } else if (num == 2){
