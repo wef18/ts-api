@@ -62,7 +62,7 @@ CREATE TABLE nursery_rhyme(
 
 /**** 创建故事音频表 ****/
 CREATE TABLE story(
-  sid      INT PRIMARY KEY AUTO_INCREMENT,
+  nid      INT PRIMARY KEY AUTO_INCREMENT,
   title    VARCHAR(64) COMMENT "故事名字",
   src      VARCHAR(128) COMMENT "故事音频",
   img_url  VARCHAR(128) COMMENT "故事图片"
@@ -70,7 +70,7 @@ CREATE TABLE story(
 
 /**** 创建诗词音频表 ****/
 CREATE TABLE poem(
-  pid      INT PRIMARY KEY AUTO_INCREMENT,
+  nid      INT PRIMARY KEY AUTO_INCREMENT,
   title    VARCHAR(32) COMMENT "诗词名字",
   name     VARCHAR(16) COMMENT "诗词作者",
   src      VARCHAR(128) COMMENT "诗词音频",
