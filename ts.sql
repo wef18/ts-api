@@ -121,14 +121,15 @@ INSERT INTO nursery_rhyme VALUES
   (NULL, '一只哈巴狗', 'yizhihabagou.mp3', 'yizhihabagou.jpg'),
   (NULL, '好爸爸坏爸爸', 'haobabahuaibaba.mp3', 'haobabahuaibaba.jpg'),
   (NULL, '黑猫警长', 'heimaojingzhang.mp3', 'heimaojingzhang.jpg'),
-  (NULL, '一闪一闪亮晶晶', 'yishanyishan.mp3', 'yishanyishan.jpg');
-INSERT INTO nursery_rhyme VALUES
+  (NULL, '一闪一闪亮晶晶', 'yishanyishan.mp3', 'yishanyishan.jpg'),
   (NULL, 'Three Sick Kittens', 'ThreeSickKittens.mp3', 'batamu.jpg', 133),
   (NULL, 'Three Little Kittens', 'ThreeLittleKittens.mp3', 'batamu1.jpg', 148),
   (NULL, 'Sing the Alphabet', 'SingtheAlphabet.mp3', 'batamu2.jpg', 151),
   (NULL, 'This Little Piggy', 'ThisLittlePiggy.mp3', 'batamu3.jpg', 106),
   (NULL, 'Rise and Shine', 'RiseandShine.mp3', 'batamu4.jpg', 109),
   (NULL, 'Rain Rain Go Away', 'RainRainGoAway.mp3', 'batamu5.jpg', 126);
+/*INSERT INTO nursery_rhyme VALUES*/
+  
 
 /**** 故事音频 ****/
 INSERT INTO story VALUES
