@@ -128,7 +128,8 @@ INSERT INTO nursery_rhyme VALUES
   (NULL, 'This Little Piggy', 'ThisLittlePiggy.mp3', 'batamu3.jpg', 106),
   (NULL, 'Rise and Shine', 'RiseandShine.mp3', 'batamu4.jpg', 109),
   (NULL, 'Rain Rain Go Away', 'RainRainGoAway.mp3', 'batamu5.jpg', 126);
-/*INSERT INTO nursery_rhyme VALUES*/
+INSERT INTO nursery_rhyme VALUES
+  (NULL, 'Rise and Shine', 'RiseandShine.mp3', 'batamu4.jpg', 109, 1),
   
 
 /**** 故事音频 ****/
@@ -147,7 +148,24 @@ INSERT INTO story VALUES
   (NULL, '为什么马的耳朵时常摇动', 'ma.mp3', 'ma.jpg'),
   (NULL, '为什么马戏团的小狗能算算术', 'xiaogou.mp3', 'xiaogou.jpg'),
   (NULL, '为什么马要站着睡觉', 'ma1.mp3', 'ma.jpg'),
-  (NULL, '为什么猫的眼睛一日三变', 'mao1.mp3', 'mao.jpg');
+  (NULL, '为什么猫的眼睛一日三变', 'mao1.mp3', 'mao.jpg'),
+  (NULL, '为什么梅花鹿身上的梅花会变', 'meihualu.mp3', 'meihualu.jpg', 151),
+  (NULL, '为什么牛吃完草后还不停地咀嚼', 'niu.mp3', 'niu.jpg', 88),
+  (NULL, '为什么说猩猩最聪明', 'xingxing.mp3', 'xingxing.jpg', 155),
+  (NULL, '为什么小狗睡觉时要将耳朵贴在地上', 'xiaogou1.mp3', 'xiaogou.jpg', 81),
+  (NULL, '为什么小熊猫总长不大', 'xiaoxingmao-001.mp3', 'xiaoxiongmao-001.jpeg', 165),
+  (NULL, '为什么有时候蜻蜓飞的很低', 'qingting-002.mp3', 'qingting-002.jpg', 65),
+  (NULL, '为什么在黑暗中猫能捉到老鼠', 'maozhualaoshu-003.mp3', 'maozhualaoshu-003.jpg', 80),
+  (NULL, '为什么在夏天狗总是伸着舌头喘气', 'xiaogou-004.mp3', 'xiaogou-004.jpg', 76),
+  (NULL, '猪为什么用嘴巴拱泥土', 'xiaozhu-005.mp3', 'xiaozhu-005.jpg', 92),
+  (NULL, '蟋蟀的耳朵为什么长在脚上', 'xishuai-006.mp3', 'xishuai-006.jpg', 88),
+  (NULL, '白白的雪', 'baibaidexue-007.mp3', 'baibaidexue-007.jpg', 72),
+  (NULL, '猜猜我有多爱你', 'caicaiwoyouduoaini-008.mp3', 'aini-008.jpg', 124),
+  (NULL, '吃什么', 'chishenme-009.mp3', 'chi-009.jpg', 56),
+  (NULL, '打雷下雨我不怕', 'daleixiayu-010.mp3', 'daleixiayu-010.jpg', 39),
+  (NULL, '点点爱上幼儿园', 'diandian-011.mp3', 'diandian-011.jpg', 99);
+INSERT INTO story VALUES
+  
 
 /**** 诗词音频 ****/
 INSERT INTO poem VALUES
@@ -165,7 +183,26 @@ INSERT INTO poem VALUES
   (NULL, '凉州词', '王翰', 'liangzhoucih.mp3', 'liangzhoucih.jpg'),
   (NULL, '公子行', '孟宾于', 'gongzixing.mp3', 'gongzixing.jpg'),
   (NULL, '游子吟', '孟郊', 'youziyin.mp3', 'youziyin.jpg'),
-  (NULL, '题诗后', '贾岛', 'tishihou.mp3', 'tishihou.jpg');
+  (NULL, '题诗后', '贾岛', 'tishihou.mp3', 'tishihou.jpg'),
+  (NULL, '蜂', '罗隐', 'feng-001.mp3', 'feng-001.jpg', 165),
+  (NULL, '雪', '罗隐', 'xue-002.mp3', 'xue-002.jpg', 139),
+  (NULL, '渡浙江问舟中人', '孟浩然', 'duzhejiang-003.mp3', 'duzhejiang-003.jpg', 168),
+  (NULL, '于易水送人', '骆宾王', 'yuyisongren-004.mp3', 'yuyisongren-004.jpg', 122),
+  (NULL, '宿石邑山中', '韩翃', 'sushiyishanzhong-005.mp3', 'sushiyishanzhong-005.jpg', 162),
+  (NULL, '送朱大入秦', '孟浩然', 'songzhu-006.mp3', 'songzhu-006.jpg', 147),
+  (NULL, '归雁', '钱起', 'guiyan-007.mp3', 'guiyan-007.jpg', 149),
+  (NULL, '过野叟居', '马戴', 'guoye-008.mp3', 'shici-008.jpg', 195),
+  (NULL, '宿建德江', '孟浩然', 'sujiandejiang-009.mp3', 'sujiandejiang-009.jpg', 139),
+  (NULL, '洛桥晚望', '孟郊', 'luoqiao-010.mp3', 'luoqiao-010.jpg', 146),
+  (NULL, '过故人庄', '孟浩然', 'guogurenzhuang-011.mp3', 'guogurenzhuang-011.jpg', 207),
+  (NULL, '送杜少府之任蜀州', '王勃', 'songdushao-012.mp3', 'songdushao-012.jpg', 129),
+  (NULL, '昌谷北园新笋', '李贺', 'changgu-013.mp3', 'changgu-013.jpg', 164),
+  (NULL, '夜别韦司士', '高适', 'yebie-014.mp3', 'yebie-014.jpg', 233),
+  (NULL, '寻隐者不遇', '贾岛', 'xunyin-015.mp3', 'xunyin-015.jpg', 136),
+  (NULL, '晚春', '韩愈', 'wancun-016.mp3', 'wancun-016.jpg', 134),
+  (NULL, '少年行', '令狐楚', 'shaonianxing-017.mp3', 'shaonianxing-017.jpg', 155);
+INSERT INTO poem VALUES
+  
 
 /**** 轮播 ****/
 INSERT INTO ts_carousel VALUES

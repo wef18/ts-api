@@ -81,9 +81,9 @@ router.get('/list', (req, res) => {
   if(num == 0){
     var sql = 'SELECT * FROM nursery_rhyme WHERE genre = 0 ORDER BY nid DESC'
   } else if(num == 1){
-    var sql = 'SELECT * FROM story'
+    var sql = 'SELECT * FROM story ORDER BY nid DESC'
   } else if (num == 2){
-    var sql = 'SELECT * FROM poem'
+    var sql = 'SELECT * FROM poem ORDER BY nid DESC'
   } else if (num == 3){
     var sql = 'SELECT * FROM nursery_rhyme WHERE genre = 1 ORDER BY nid DESC'
   } else {
