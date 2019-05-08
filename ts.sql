@@ -127,9 +127,10 @@ INSERT INTO nursery_rhyme VALUES
   (NULL, 'Sing the Alphabet', 'SingtheAlphabet.mp3', 'batamu2.jpg', 151),
   (NULL, 'This Little Piggy', 'ThisLittlePiggy.mp3', 'batamu3.jpg', 106),
   (NULL, 'Rise and Shine', 'RiseandShine.mp3', 'batamu4.jpg', 109),
-  (NULL, 'Rain Rain Go Away', 'RainRainGoAway.mp3', 'batamu5.jpg', 126);
+  (NULL, 'Rain Rain Go Away', 'RainRainGoAway.mp3', 'batamu5.jpg', 126),
+  (NULL, '葫芦娃', 'huluwa.mp3', 'huluwa.jpg', 90, 0);
 INSERT INTO nursery_rhyme VALUES
-  (NULL, 'Rise and Shine', 'RiseandShine.mp3', 'batamu4.jpg', 109, 1),
+  
   
 
 /**** 故事音频 ****/

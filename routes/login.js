@@ -13,10 +13,10 @@ router.get("/login",(req,res)=>{
   http.get(url, (eq, es) => {
     eq.on('data', (data) => {
       openid = JSON.parse(data)
-      pool.query('SELECT openid FROM ts_user WHERE openid = ? LIMIT 1', openid.openid, (err, result) => {
+      pool.query('SELECT openid,utime FROM ts_user WHERE openid = ? LIMIT 1', openid.openid, (err, result) => {
         if(err) throw err
         if(result.length > 0){
-          res.send({code: 1, msg: '有', openid: openid.openid})
+          res.send({code: 1, msg: '有', openid: openid.openid, data: result})
         } else {
           let date =  new Date()
           var data = {
