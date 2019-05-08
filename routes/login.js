@@ -3,23 +3,23 @@ const http = require('https')
 const router = express.Router();
 const pool = require("../pool");
 
-function conversion(t) {
-  if (t < 10) {
-    return '0' + t
-  }
-  return t;
-}
+// function conversion(t) {
+//   if (t < 10) {
+//     return '0' + t
+//   }
+//   return t;
+// }
 
-function transformTime(db_time) {
-  let time = new Date(db_time);
-  let Y = time.getFullYear();
-  let M = conversion(time.getMonth() + 1);
-  let D = conversion(time.getDate());
-  let H = conversion(time.getHours());
-  let Mi = conversion(time.getMinutes());
-  let S = conversion(time.getSeconds());
-  return Y + '-' + M + '-' + D + ' ' + H + ':' + Mi + ':' + S
-}
+// function transformTime(db_time) {
+//   let time = new Date(db_time);
+//   let Y = time.getFullYear();
+//   let M = conversion(time.getMonth() + 1);
+//   let D = conversion(time.getDate());
+//   let H = conversion(time.getHours());
+//   let Mi = conversion(time.getMinutes());
+//   let S = conversion(time.getSeconds());
+//   return Y + '-' + M + '-' + D + ' ' + H + ':' + Mi + ':' + S
+// }
 
 //判断用户
 router.get("/login", (req, res) => {
@@ -31,11 +31,10 @@ router.get("/login", (req, res) => {
   http.get(url, (eq, es) => {
     eq.on('data', (data) => {
       openid = JSON.parse(data)
-      pool.query('SELECT openid,utime FROM ts_user WHERE openid = ? LIMIT 1', openid.openid, (err, result) => {
+      pool.query('SELECT openid FROM ts_user WHERE openid = ? LIMIT 1', openid.openid, (err, result) => {
         if (err) throw err
         if (result.length > 0) {
-          let a = result[0].utime
-          res.send({ code: 1, msg: '有', openid: openid.openid, time: transformTime(a) })
+          res.send({ code: 1, msg: '有', openid: openid.openid })
         } else {
           // let date =  new Date()
           // var data = {
