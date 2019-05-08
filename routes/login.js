@@ -3,23 +3,23 @@ const http = require('https')
 const router = express.Router();
 const pool = require("../pool");
 
-function conversion(t) {
-  if (t < 10) {
-    return '0' + t
-  }
-  return t;
-}
+// function conversion(t) {
+//   if (t < 10) {
+//     return '0' + t
+//   }
+//   return t;
+// }
 
-function transformTime(db_time) {
-  let time = new Date(db_time);
-  let Y = time.getFullYear();
-  let M = conversion(time.getMonth() + 1);
-  let D = conversion(time.getDate());
-  let H = conversion(time.getHours());
-  let Mi = conversion(time.getMinutes());
-  let S = conversion(time.getSeconds());
-  return Y + '-' + M + '-' + D + ' ' + H + ':' + Mi + ':' + S
-}
+// function transformTime(db_time) {
+//   let time = new Date(db_time);
+//   let Y = time.getFullYear();
+//   let M = conversion(time.getMonth() + 1);
+//   let D = conversion(time.getDate());
+//   let H = conversion(time.getHours());
+//   let Mi = conversion(time.getMinutes());
+//   let S = conversion(time.getSeconds());
+//   return Y + '-' + M + '-' + D + ' ' + H + ':' + Mi + ':' + S
+// }
 
 //判断用户
 router.get("/login", (req, res) => {
@@ -42,10 +42,10 @@ router.get("/login", (req, res) => {
           //   utime: date
           //  }
           let date = new Date().getTime()
-          let itme = transformTime(date)
+          // let itme = transformTime(date)
           var data = {
             openid: openid.openid,
-            utime: itme
+            utime: date
           }
           pool.query('INSERT INTO ts_user SET ?', data, (err, result) => {
             if (err) throw err
