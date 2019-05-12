@@ -17,7 +17,7 @@ CREATE TABLE ts_user(
   uname  VARCHAR(50) COMMENT "名字",
   openid   VARCHAR(50) COMMENT "openid",
   uimg VARCHAR(128) NOT NULL COMMENT "用户图片",
-  utime  datetime
+  utime  bigint
 );
 
 /**** 轮播 ****/
@@ -78,6 +78,31 @@ CREATE TABLE poem(
 );
 
 
+/**** 创建阶段表 ****/
+CREATE TABLE phase(
+  id       INT PRIMARY KEY AUTO_INCREMENT,
+  phase   VARCHAR(32) COMMENT "阶段",
+  isShow   BOOL
+);
+INSERT INTO phase VALUES
+  (NULL, '全部', 0),
+  (NULL, '0-1岁', 1),
+  (NULL, '1-3岁', 1),
+  (NULL, '3-6岁', 1),
+  (NULL, '6-12岁', 1),
+  (NULL, '12岁以上', 1);
+
+/**** 创建内容表 ****/
+CREATE TABLE content(
+  id          INT PRIMARY KEY AUTO_INCREMENT,
+  openid      VARCHAR(50) COMMENT "openid",
+  content     VARCHAR(1000) COMMENT "内容",
+  comment     INT COMMENT "评论人数",
+  praise      INT COMMENT  "点赞人数",
+  ctime       bigint COMMENT "发表时间",
+  is_phase    INT
+);
+
 
 
 /****************/
@@ -128,7 +153,20 @@ INSERT INTO nursery_rhyme VALUES
   (NULL, 'This Little Piggy', 'ThisLittlePiggy.mp3', 'batamu3.jpg', 106),
   (NULL, 'Rise and Shine', 'RiseandShine.mp3', 'batamu4.jpg', 109),
   (NULL, 'Rain Rain Go Away', 'RainRainGoAway.mp3', 'batamu5.jpg', 126),
-  (NULL, '葫芦娃', 'huluwa.mp3', 'huluwa.jpg', 90, 0);
+  (NULL, '葫芦娃', 'huluwa.mp3', 'huluwa.jpg', 90, 0),
+  (NULL, 'This Is Gonna Be Sweet', 'ThisIsGonnaBeSweet.mp3', 'ThisIsGonnaBeSweet.jpg', 163, 1),
+  (NULL, 'Bada Food Patrol', 'BadaFoodPatrol.mp3', 'BadaFoodPatrol.jpg', 135, 1),
+  (NULL, 'Ponytail', 'Ponytail.mp3', 'Ponytail.jpg', 118, 1),
+  (NULL, 'The Wheels on the Bus', 'TheWheelsontheBus.mp3', 'TheWheelsontheBus.jpg', 169, 1),
+  (NULL, 'ABC Sounds to Remember', 'ABCSoundstoRemember.mp3', 'ABCSoundstoRemember.jpg', 248, 1),
+  (NULL, 'Ponytail in Hollywood', 'PonytailinHollywood.mp3', 'PonytailinHollywood.jpg', 129, 1),
+  (NULL, 'Teddy Bear, Teddy Bear, Say Goodnight', 'TeddyBearTeddyBearSayGoodnight.mp3', 'TeddyBearTeddyBearSayGoodnight.jpg', 125, 1),
+  (NULL, 'Zoo Party', 'ZooParty.mp3', 'ZooParty.jpg', 120, 1),
+  (NULL, 'Po Pow Pay', 'PoPowPay.mp3', 'PoPowPay.jpg', 125, 1),
+  (NULL, 'Star Light Star Bright', 'StarLightStarBright.mp3', 'StarLightStarBright.jpg', 99, 1),
+  (NULL, 'Work on Our Fitness', 'WorkonOurFitness.mp3', 'WorkonOurFitness.jpg', 154, 1),
+  (NULL, 'Po Pow Pay Dance Along', 'PoPowPayDanceAlong.mp3', 'PoPowPayDanceAlong.jpg', 124, 1),
+  (NULL, '小跳蛙', 'xiaotiaowa.mp3', 'xiaotiaowa.jpg', 151, 0);
 INSERT INTO nursery_rhyme VALUES
   
   

@@ -13,7 +13,7 @@ var pool = mysql.createPool({
   user     : process.env.ACCESSKEY,
   password : process.env.SECRETKEY,
   database : 'app_' + process.env.APPNAME,
-  connectionLimit: 3,
+  connectionLimit: 20,
   multipleStatements: true
 })
 //把创建好的连接池导出

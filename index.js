@@ -10,6 +10,7 @@ const session=require('express-session')
 const index = require("./routes/index")
 const classify = require("./routes/classify")
 const login = require('./routes/login')
+const addContent = require('./routes/addContent')
 
 // var options = {
 //   key: fs.readFileSync('./ssl/1964386_tsapi.xyz.key'),
@@ -23,7 +24,10 @@ server.listen(PORT, () => {
   // console.log("监听在 " + PORT)
 })
 
-server.use(bodyParser.json());
+// server.use(bodyParser.json());
+server.use(bodyParser.urlencoded({
+  extended:false
+}));
   //托管静态文件到public目录
 server.use(express.static(__dirname+"/public"));
 
@@ -47,3 +51,4 @@ server.use(cors({
 server.use(index)
 server.use(classify)
 server.use(login)
+server.use(addContent)
