@@ -102,7 +102,7 @@ CREATE TABLE content(
   ctime       bigint COMMENT "发表时间",
   is_phase    INT
 );
-
+SELECT a.id, a.openid, a.content, a.comment, a.praise, a.ctime, b.uname, b.uimg FROM content AS a, ts_user AS b WHERE a.openid = b.openid AND a.is_phase = 2 ORDER BY a.id DESC
 
 
 /****************/
