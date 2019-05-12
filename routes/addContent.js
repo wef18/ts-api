@@ -32,6 +32,8 @@ router.get('/content', (req, res) => {
     pageCount: 0,
     products: []
   }
+  if (req.query.pno !== undefined)
+    output.pno = parseInt(req.query.pno)
   if(index == 1){
     var sql = 'SELECT a.id, a.openid, a.content, a.comment, a.praise, a.ctime, b.uname, b.uimg FROM content AS a, ts_user AS b WHERE a.openid = b.openid ORDER BY a.id DESC'
   } else if(index == 2) {
