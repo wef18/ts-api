@@ -135,7 +135,7 @@ router.get('/cancel', (req, res) => {
           if(result.changedRows == 1){
             res.send({code: 1, msg: '取消成功'})
           } else {
-            res.send({code: 1, msg: '取消失败'})
+            res.send({code: 2, msg: '取消失败'})
           }
         })
       })
