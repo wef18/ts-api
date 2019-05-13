@@ -14,9 +14,16 @@ router.post('/addcontent', (req, res) => {
     ctime: new Date().getTime(),
     is_phase: data.id
   }
-  pool.query('INSERT INTO content SET ?', obj, (err, result) => {
+  pool.query('SELECT id FROM ts_user  WHERE openid = ?  LIMIT 1', data.openid, (err, result) => {
     if(err) throw err
-    res.send({code: 1})
+    if(result.length > 0){
+      pool.query('INSERT INTO content SET ?', obj, (err, result) => {
+        if(err) throw err
+        res.send({code: 1, msg: '发表成功'})
+      })
+    } else {
+      res.send({code: 2, msg: '信息为空重新登录'})
+    }
   })
 })
 
@@ -78,6 +85,23 @@ router.get('/content', (req, res) => {
       })
     } else {
       res.send(output)
+    }
+  })
+})
+
+/**
+ * 发表成功发送请求一条数据
+ */
+router.get('/singleton', (req, res) => {
+  // let index = req.query.index
+  let openid = req.query.openid
+  let sql = 'SELECT a.id, a.openid, a.content, a.comment, a.praise, a.ctime, b.uname, b.uimg FROM content AS a, ts_user AS b WHERE a.openid = b.openid AND a.openid = ? ORDER BY a.id DESC LIMIT 1'
+  pool.query(sql, openid, (err, result) => {
+    if(err) throw err
+    if(result.length > 0){
+      res.send(result)
+    } else {
+      res.send({code: 2, msg: '数据为空'})
     }
   })
 })
