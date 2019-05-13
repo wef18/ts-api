@@ -25,6 +25,7 @@ router.post('/addcontent', (req, res) => {
  */
 router.get('/content', (req, res) => {
   var index = req.query.index
+  var openid = req.query.openid
   var output = {
     pno: 1,
     pageSize: 10,
@@ -58,9 +59,90 @@ router.get('/content', (req, res) => {
     output.pageCount = pageCount;
     var starti = output.pno * output.pageSize;
     output.products = result.slice(starti, starti + output.pageSize);
-    res.send(output)
+    let out = output.products
+    if(out.length > 0){
+      var finishCount = 0
+      out.forEach((val, index) => {
+        pool.query('SELECT id FROM praise WHERE openid = ? AND content_id = ?', [openid, val.id], (err, result) => {
+          if(err) throw err
+          finishCount++
+          if(result.length > 0){
+            val.is_praise = 1
+          } else {
+            val.is_praise = 0
+          }
+          if(finishCount == out.length){
+            res.send(output)
+          }
+        })
+      })
+    } else {
+      res.send(output)
+    }
   })
 })
+
+/**
+ * 点赞
+ */
+router.get('/praise', (req, res) => {
+  let openid = req.query.openid
+  let id = req.query.id
+  let data = {
+    openid: openid,
+    content_id: id
+  }
+  let sql = 'INSERT INTO praise SET ?'
+  pool.query(sql, data, (err, result) => {
+    if(err) throw err
+    if(result.affectedRows == 1){
+      pool.query('SELECT praise FROM content WHERE id = ? LIMIT 1', id, (err, result) => {
+        if(err) throw err
+        let praise = parseInt(result[0].praise) + 1
+        pool.query('UPDATE content SET praise = ? WHERE id = ?', [praise, id], (err, result) => {
+          if(err) throw err
+          if(result.changedRows == 1){
+            res.send({code: 1, msg: '点赞成功'})
+          } else {
+            res.send({code: 2, msg: '点赞失败'})
+          } 
+        })
+      })
+    }
+  })
+})
+
+
+/**
+ * 取消点赞
+ */
+router.get('/cancel', (req, res) => {
+  let openid = req.query.openid
+  let id = req.query.id
+  let data = {
+    openid: openid,
+    content_id: id
+  }
+  let sql = 'DELETE FROM praise WHERE content_id = ? AND openid = ?'
+  pool.query(sql, [id, openid], (err, result) => {
+    if(err) throw err
+    if(result.affectedRows == 1){
+      pool.query('SELECT praise FROM content WHERE id = ? LIMIT 1', id, (err, result) => {
+        if(err) throw err
+        let praise = parseInt(result[0].praise) - 1
+        pool.query('UPDATE content SET praise = ? WHERE id = ?', [praise, id], (err, result) => {
+          if(err) throw err
+          if(result.changedRows == 1){
+            res.send({code: 1, msg: '取消成功'})
+          } else {
+            res.send({code: 1, msg: '取消失败'})
+          }
+        })
+      })
+    } 
+  })
+})
+
 
 
 /* 导出 */

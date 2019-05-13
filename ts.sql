@@ -103,7 +103,12 @@ CREATE TABLE content(
   is_phase    INT
 );
 SELECT a.id, a.openid, a.content, a.comment, a.praise, a.ctime, b.uname, b.uimg FROM content AS a, ts_user AS b WHERE a.openid = b.openid AND a.is_phase = 2 ORDER BY a.id DESC
-
+/**** 创建点赞表 ****/
+CREATE TABLE praise(
+  id          INT PRIMARY KEY AUTO_INCREMENT,
+  openid      VARCHAR(50) COMMENT "点赞人的openid",
+  content_id  INT COMMENT "点赞内容的ID"
+);
 
 /****************/
 /****数据导入****/
